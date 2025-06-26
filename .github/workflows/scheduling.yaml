@@ -1,0 +1,23 @@
+name: scheduler
+
+#This will run everyday at 2300
+
+on: 
+  schedule: 
+    - cron: '0 23 * * *'
+
+jobs: 
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: repo_call
+        uses: actions/checkout@v4
+
+      - name: get_python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: '3.11'
+
+      - name: run_python
+        run: python script.py
